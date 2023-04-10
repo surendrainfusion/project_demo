@@ -1,10 +1,8 @@
 # project_demo
+//node_modules
 
 #application
 1. Dispatch methods use
-
-#application_copy
-1. mapState and mapAction methods use
 
 #server
 1. express framework use
