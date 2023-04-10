@@ -1,27 +1,25 @@
-# Application
+## Application
 
-### install dependencies
+#### install dependencies
 npm install
 
-### serve with hot reload at localhost:8080
+#### serve with hot reload at localhost:8080
 npm run dev
 
-### build for production with minification
+#### build for production with minification
 npm run build
 
-### build for production and view the bundle analyzer report
+#### build for production and view the bundle analyzer report
 npm run build --report
 
-### run unit tests
+#### run unit tests
 npm run unit
 
-### run all tests
+#### run all tests
 npm test
 
 
-# Server
-If the installation was successful, you should be able to run the following command.
-
+## Server
     $ node --version
     v18.15.0
 
@@ -35,13 +33,13 @@ If you need to update `npm`;
     $ npm install npm -g
 
 
-### Install
+#### Install
     $ git clone https://github.com/surendrainfusion/project_demo
     $ cd project_demo
     $ npm install
 
-### Running the Server
+#### Running the Server
     $ npm run server
 
-### Simple build for production
+#### Simple build for production
     $ npm build

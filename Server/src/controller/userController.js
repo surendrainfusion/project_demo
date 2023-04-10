@@ -62,7 +62,7 @@ export const addUser = async (req, res) => {
       email: email,
       password: hashedPassword,
       profile: profile,
-      updateDate: `${date}`
+      updateDate: `${date}`,
     });
     const result = await userData.save();
     if (result) {
@@ -87,7 +87,7 @@ export const updateUser = async (req, res) => {
   const updateData = {
     name: name,
     mobileNo: mobileNo,
-    email : email,
+    email: email,
     updateDate: date,
   };
   const result = await userModel.findByIdAndUpdate({ _id: id }, updateData, {
@@ -111,8 +111,8 @@ export const updateUser = async (req, res) => {
 //Delete User Record
 export const deleteUser = async (req, res) => {
   const id = req.params.id;
- 
-  const result = await userModel.findByIdAndRemove({ _id: id },{new:true});
+
+  const result = await userModel.findByIdAndRemove({ _id: id }, { new: true });
   if (result) {
     res.status(200).json({
       status: "success",
@@ -132,19 +132,19 @@ export const getUser = async (req, res) => {
   const id = req.params.id;
   try {
     let result = await userModel.find({ _id: id });
-    if(result){
+    if (result) {
       res.status(200).json({
-        status : "success",
-        message : "user find successfully",
-        data : result
-      })
+        status: "success",
+        message: "user find successfully",
+        data: result,
+      });
     }
   } catch (error) {
     res.status(401).json({
-      status : "failed",
-      message : "user not found",
-      error : result.response.error
-    })
+      status: "failed",
+      message: "user not found",
+      error: result.response.error,
+    });
   }
 };
 
@@ -160,35 +160,34 @@ export const userList = async (req, res) => {
 
 //wroking on Add Post
 export const addPost = async (req, res) => {
+  const { id } = req.user;
+  const { title, description, photo} = req.body;
   try {
-    // console.log("userController Add Post", req.body);
+    console.log("userController Add Post", req.body);
     const postData = new postModel({
       date: `${date}`,
-      user_id: "user id",
-      author: "name",
-      title: req.body.title,
-      description: req.body.description,
-      like: req.body.like,
-      comment: [
-        {
-          comments: "req.body.comment.comments",
-          count: 5,
-        },
-      ],
+      userId: id,
+      title: title,
+      description: description,
+      photo: photo,
+      updateDate: `${date}`,
     });
 
     let data = await postData.save();
-    // console.log("data:::", data);
+    console.log("data:::", data);
     if (data) {
       res.status(200).json({
         status: true,
-        message: "New post add successfully",
+        message: "New post created",
         result: data,
       });
       res.send(data);
     }
   } catch (error) {
-    // console.log("error in addPost::", error);
+    res.status(401).josn({
+      status: false,
+      message: "something wrong! try again",
+    });
   }
 };
 
