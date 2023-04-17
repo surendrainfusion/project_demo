@@ -46,7 +46,7 @@
           <div class="form-group">
             <label for="profile">Upload Image</label>
             <Field
-              name="profile"
+              name="image"
               type="file"
               class="form-control file-upload"
             />
@@ -106,7 +106,7 @@ export default {
         .min(6, "Must be at least 6 characters!")
         .max(30, "Must be maximum 30 characters!"),
 
-      profile: yup.string().required("image upload is required!"),
+      image: yup.string().required("image upload is required!"),
     });
 
     return {

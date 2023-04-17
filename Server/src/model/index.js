@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   date: { type: String },
-  name: { type: String, required: true },
+  username: { type: String, required: true },
   mobileNo: { type: String, required: true },
   email: { type: String, required: true, lowercase: true, unique: true },
   password: { type: String, required: true },
-  profile: { type: String },
+  image: { type: String },
   updateDate: { type: String },
 });
 
@@ -38,6 +38,16 @@ const likeSchema = new mongoose.Schema({
   postId: { type: String },
   like: [],
 });
+
+//upload image
+const fileSchema = new mongoose.Schema({
+  name: String,
+  path: String,
+  size: Number,
+  type: String
+});
+
+export const File = mongoose.model('Files', fileSchema);
 //export model
 export const userModel = mongoose.model("users", userSchema);
 export const postModel = mongoose.model("posts", postSchema);

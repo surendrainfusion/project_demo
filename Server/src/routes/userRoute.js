@@ -12,6 +12,7 @@ import {
   Logout,
 } from "../controller/userController.js";
 
+
 export const router = express.Router();
 
 //login api
@@ -29,3 +30,25 @@ router.post("/post/add", checkToken, addPost);
 
 //logout api
 router.get("/logout", Logout);
+
+
+//image upload
+import { File } from "../model/index.js";
+import upload from "../middleware/upload.js";
+router.post('/upload', upload.single('file'), (req, res, next) => {
+  console.log("request", req.file);
+  const file = new File({
+    name: req.file.originalname,
+    path: req.file.path,
+    size: req.file.size,
+    type: req.file.mimetype
+  });
+
+  file.save((err) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    }
+
+    res.status(201).json({ message: 'File uploaded successfully' });
+  });
+});

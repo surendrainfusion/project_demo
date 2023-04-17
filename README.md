@@ -9,14 +9,21 @@ npm run dev
 #### build for production with minification
 npm run build
 
-#### build for production and view the bundle analyzer report
-npm run build --report
+### Dispatch
+It has been available in both Vue.js 2 and Vue.js 3.
 
-#### run unit tests
-npm run unit
+dispatch is a method that allows a component to trigger an action in a Vuex store.
+When a component dispatches an action, the store receives the action and runs the corresponding mutation to update its state. 
 
-#### run all tests
-npm test
+The dispatch method takes the action type and payload as arguments, and can be used both inside a component's methods and computed properties.
+
+### mapAction / mapState
+mapState and mapActions are part of Vuex, which is the official state management library for Vue.js.
+These helper functions were introduced in Vuex version 2.1
+
+mapActions creates a method that dispatches a specific action to the store.
+
+mapState creates a computed property that is bound to a specific state property in the store.
 
 
 ## Server
